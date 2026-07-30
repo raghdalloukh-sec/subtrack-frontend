@@ -18,6 +18,7 @@ export class Dashboard implements OnInit {
   subscriptions = this.subscriptionService.subscriptions;
   showForm = false;
   errorMessage = '';
+  logoErrors = new Set<string>();
 
   newSub: SubscriptionInput = {
     name: '',
@@ -43,6 +44,15 @@ export class Dashboard implements OnInit {
   isUpcoming(dateStr: string): boolean {
     const diffDays = (new Date(dateStr).getTime() - Date.now()) / 86400000;
     return diffDays >= 0 && diffDays <= 7;
+  }
+
+  getLogoUrl(name: string): string {
+    const slug = name.trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+    return `https://cdn.simpleicons.org/${slug}`;
+  }
+
+  onLogoError(id: string) {
+    this.logoErrors.add(id);
   }
 
   onAddSubscription() {

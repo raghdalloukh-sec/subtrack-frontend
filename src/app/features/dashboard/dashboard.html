@@ -45,11 +45,21 @@
   <div class="sub-list">
     @for (sub of subscriptions(); track sub.id) {
       <div class="sub-card">
+        <div class="sub-logo">
+          @if (!logoErrors.has(sub.id)) {
+            <img [src]="getLogoUrl(sub.name)" [alt]="sub.name" (error)="onLogoError(sub.id)" />
+          } @else {
+            <span class="logo-fallback">{{ sub.name.charAt(0).toUpperCase() }}</span>
+          }
+        </div>
+
         <span class="status-dot" [class.status-upcoming]="isUpcoming(sub.nextPayment)"></span>
+
         <div class="sub-info">
           <h3>{{ sub.name }}</h3>
           <p class="next-payment">{{ sub.nextPayment | date: 'dd MMM yyyy' }} · {{ sub.periodicity === 'monthly' ? 'mensuel' : sub.periodicity === 'yearly' ? 'annuel' : 'hebdo' }}</p>
         </div>
+
         <div class="sub-side">
           <p class="sub-price">{{ sub.price }} <span class="currency">{{ sub.currency }}</span></p>
           <button class="delete-btn" (click)="onDelete(sub.id)">Retirer</button>
