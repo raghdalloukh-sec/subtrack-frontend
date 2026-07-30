@@ -54,11 +54,11 @@
 
         <span class="status-dot" [class.status-upcoming]="isUpcoming(sub.nextPayment)"></span>
 
-        <div class="sub-info">
-          <h3>{{ sub.name }}</h3>
-          <p class="next-payment">{{ sub.nextPayment | date: 'dd MMM yyyy' }} · {{ sub.periodicity === 'monthly' ? 'mensuel' : sub.periodicity === 'yearly' ? 'annuel' : 'hebdo' }}</p>
-        </div>
-
+   <div class="sub-info">
+  <h3>{{ sub.name }}</h3>
+  <p class="next-payment">{{ sub.nextPayment | date: 'dd MMM yyyy' }} · {{ sub.periodicity === 'monthly' ? 'mensuel' : sub.periodicity === 'yearly' ? 'annuel' : 'hebdo' }}</p>
+  <span class="countdown" [ngClass]="getCountdownClass(sub.nextPayment)">{{ getCountdownLabel(sub.nextPayment) }}</span>
+</div>
         <div class="sub-side">
           <p class="sub-price">{{ sub.price }} <span class="currency">{{ sub.currency }}</span></p>
           <button class="delete-btn" (click)="onDelete(sub.id)">Retirer</button>

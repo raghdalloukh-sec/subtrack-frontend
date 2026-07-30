@@ -43,9 +43,32 @@ export class Dashboard implements OnInit {
     this.subscriptionService.loadAll().subscribe();
   }
 
+  private getDaysRemaining(dateStr: string): number {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const target = new Date(dateStr);
+    target.setHours(0, 0, 0, 0);
+    return Math.round((target.getTime() - today.getTime()) / 86400000);
+  }
+
   isUpcoming(dateStr: string): boolean {
-    const diffDays = (new Date(dateStr).getTime() - Date.now()) / 86400000;
+    const diffDays = this.getDaysRemaining(dateStr);
     return diffDays >= 0 && diffDays <= 7;
+  }
+
+  getCountdownLabel(dateStr: string): string {
+    const days = this.getDaysRemaining(dateStr);
+    if (days < 0) return `En retard de ${Math.abs(days)} j`;
+    if (days === 0) return "Aujourd'hui";
+    if (days === 1) return 'Demain';
+    return `Dans ${days} j`;
+  }
+
+  getCountdownClass(dateStr: string): string {
+    const days = this.getDaysRemaining(dateStr);
+    if (days < 0) return 'countdown-overdue';
+    if (days <= 7) return 'countdown-soon';
+    return 'countdown-normal';
   }
 
   getLogoUrl(name: string): string {

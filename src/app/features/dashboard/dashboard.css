@@ -314,3 +314,26 @@
   margin-bottom: 0.5rem;
   text-align: center;
 }
+.countdown {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.countdown-normal {
+  background: var(--color-surface-2);
+  color: var(--color-text-secondary);
+}
+
+.countdown-soon {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.countdown-overdue {
+  background: var(--color-danger-bg);
+  color: #FF9A9E;
+}
