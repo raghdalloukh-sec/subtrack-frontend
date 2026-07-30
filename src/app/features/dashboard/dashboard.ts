@@ -40,6 +40,11 @@ export class Dashboard implements OnInit {
     this.subscriptionService.loadAll().subscribe();
   }
 
+  isUpcoming(dateStr: string): boolean {
+    const diffDays = (new Date(dateStr).getTime() - Date.now()) / 86400000;
+    return diffDays >= 0 && diffDays <= 7;
+  }
+
   onAddSubscription() {
     this.errorMessage = '';
 

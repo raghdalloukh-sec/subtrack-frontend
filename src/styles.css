@@ -1,31 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap');
 
 :root {
-  --color-bg: #F2F0EA;
-  --color-surface: #FFFFFF;
-  --color-ink: #201D2B;
-  --color-primary: #7A2E3D;
-  --color-primary-dark: #5E2230;
-  --color-primary-light: #F1E4E6;
-  --color-accent: #B08D2E;
-  --color-text-secondary: #5C5A63;
-  --color-text-muted: #97949C;
-  --color-border: #DEDACD;
-  --color-danger: #B3261E;
-  --color-danger-bg: #FBEAE8;
-  --color-success: #3D6B4C;
-  --color-success-bg: #EAF3EC;
+  --color-bg: #0E1B16;
+  --color-surface: #16261F;
+  --color-surface-2: #1E332B;
+  --color-primary: #C9A227;
+  --color-primary-dark: #A8841C;
+  --color-primary-light: rgba(201, 162, 39, 0.12);
+  --color-ink: #F5F1E6;
+  --color-text-secondary: #B9B2A0;
+  --color-text-muted: #7C7768;
+  --color-border: rgba(201, 162, 39, 0.18);
+  --color-danger: #E5484D;
+  --color-danger-bg: rgba(229, 72, 77, 0.12);
+  --color-success: #4ADE80;
+  --color-success-bg: rgba(74, 222, 128, 0.12);
 
-  --font-display: 'Fraunces', serif;
+  --font-display: 'Playfair Display', serif;
   --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
 
   --radius-sm: 8px;
   --radius: 14px;
-  --radius-lg: 22px;
-  --shadow-sm: 0 1px 2px rgba(32, 29, 43, 0.06);
-  --shadow: 0 2px 8px rgba(32, 29, 43, 0.07), 0 8px 20px rgba(32, 29, 43, 0.05);
-  --shadow-md: 0 12px 32px rgba(32, 29, 43, 0.12);
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 20px 50px rgba(0, 0, 0, 0.45);
 }
 
 * {
@@ -50,6 +49,6 @@ h2,
 h3 {
   font-family: var(--font-display);
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.005em;
   margin: 0;
 }

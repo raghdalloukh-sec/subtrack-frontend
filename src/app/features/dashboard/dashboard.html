@@ -1,7 +1,7 @@
 <div class="dashboard">
   <header class="dashboard-header">
     <div>
-      <p class="eyebrow">Gestion d'abonnements</p>
+      <p class="eyebrow">SubTrack</p>
       <h1>Mes abonnements</h1>
     </div>
     <button class="logout-btn" (click)="onLogout()">Déconnexion</button>
@@ -45,19 +45,19 @@
   <div class="sub-list">
     @for (sub of subscriptions(); track sub.id) {
       <div class="sub-card">
+        <span class="status-dot" [class.status-upcoming]="isUpcoming(sub.nextPayment)"></span>
         <div class="sub-info">
-          <p class="sub-period">{{ sub.periodicity === 'monthly' ? 'Mensuel' : sub.periodicity === 'yearly' ? 'Annuel' : 'Hebdo' }}</p>
           <h3>{{ sub.name }}</h3>
-          <p class="next-payment">Prochain paiement : {{ sub.nextPayment | date: 'dd MMM yyyy' }}</p>
+          <p class="next-payment">{{ sub.nextPayment | date: 'dd MMM yyyy' }} · {{ sub.periodicity === 'monthly' ? 'mensuel' : sub.periodicity === 'yearly' ? 'annuel' : 'hebdo' }}</p>
         </div>
         <div class="sub-side">
           <p class="sub-price">{{ sub.price }} <span class="currency">{{ sub.currency }}</span></p>
-          <button class="delete-btn" (click)="onDelete(sub.id)">Résilier</button>
+          <button class="delete-btn" (click)="onDelete(sub.id)">Retirer</button>
         </div>
       </div>
     } @empty {
       <div class="empty-state">
-        <p class="empty-title">Aucun billet pour l'instant</p>
+        <p class="empty-title">Aucun abonnement pour l'instant</p>
         <p class="empty-subtitle">Ajoute ton premier abonnement pour commencer le suivi.</p>
       </div>
     }

@@ -9,116 +9,86 @@
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background: var(--color-bg);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(201, 162, 39, 0.08), transparent 55%),
+    var(--color-bg);
 }
 
 .auth-form {
-  position: relative;
   background: var(--color-surface);
-  padding: 2.75rem 2.25rem 2.5rem;
+  padding: 3rem 2.5rem;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);
   width: 100%;
-  max-width: 380px;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
 }
 
-.auth-form::before,
-.auth-form::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 22px;
-  height: 22px;
-  background: var(--color-bg);
-  border-radius: 50%;
-  transform: translateY(-50%);
-}
-
-.auth-form::before {
-  left: -11px;
-}
-
-.auth-form::after {
-  right: -11px;
-}
-
-.stamp {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 2px dashed var(--color-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 600;
-  font-size: 1.3rem;
-  color: var(--color-primary);
-  margin: 0 auto 1rem;
-  transform: rotate(-8deg);
-}
-
 .eyebrow {
   text-align: center;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin: 0 0 0.5rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin: 0 0 0.6rem;
 }
 
 .auth-form h1 {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-style: italic;
   text-align: center;
-  margin: 0 0 0.35rem;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.rule {
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--color-primary);
+  margin: 1rem auto 1rem;
 }
 
 .auth-subtitle {
   text-align: center;
   color: var(--color-text-secondary);
-  font-size: 0.87rem;
+  font-size: 0.88rem;
   margin: 0 0 1.75rem;
 }
 
 .auth-form label {
   font-size: 0.78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-weight: 500;
   color: var(--color-text-secondary);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
   margin-top: 0.9rem;
 }
 
 .auth-form input {
-  padding: 0.7rem 0.85rem;
-  border: 1.5px solid var(--color-border);
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   font-size: 0.95rem;
   font-family: var(--font-body);
   color: var(--color-ink);
-  background: var(--color-bg);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  background: var(--color-surface-2);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .auth-form input:focus {
   outline: none;
   border-color: var(--color-primary);
-  background: var(--color-surface);
-  box-shadow: 0 0 0 4px var(--color-primary-light);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
 }
 
 .auth-form button {
-  margin-top: 1.75rem;
+  margin-top: 1.85rem;
   padding: 0.8rem;
   background: var(--color-primary);
-  color: #fff;
-  font-family: var(--font-body);
+  color: #16261F;
   font-size: 0.95rem;
   font-weight: 600;
   border: none;
@@ -128,12 +98,13 @@
 }
 
 .auth-form button:hover:not(:disabled) {
-  background: var(--color-primary-dark);
+  background: #DDB93A;
   transform: translateY(-1px);
 }
 
 .auth-form button:disabled {
   background: var(--color-text-muted);
+  color: var(--color-surface);
   cursor: not-allowed;
 }
 
@@ -141,7 +112,7 @@
   text-align: center;
   font-size: 0.85rem;
   color: var(--color-text-secondary);
-  margin: 1.4rem 0 0;
+  margin: 1.5rem 0 0;
 }
 
 .auth-form a {
@@ -156,11 +127,10 @@
 
 .error {
   background: var(--color-danger-bg);
-  color: var(--color-danger);
+  color: #FF9A9E;
   padding: 0.6rem 0.8rem;
   border-radius: var(--radius-sm);
-  font-size: 0.82rem;
-  margin-bottom: 0.4rem;
+  font-size: 0.83rem;
+  margin-bottom: 0.5rem;
   text-align: center;
-  font-weight: 500;
 }
