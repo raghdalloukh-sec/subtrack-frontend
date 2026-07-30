@@ -1,0 +1,27 @@
+<div class="auth-container">
+  <form (ngSubmit)="onSubmit()" class="auth-form">
+    <div class="stamp">S</div>
+    <p class="eyebrow">SubTrack</p>
+    <h1>Créer un compte</h1>
+    <p class="auth-subtitle">Commence à suivre tes abonnements</p>
+
+    @if (errorMessage) {
+      <p class="error">{{ errorMessage }}</p>
+    }
+    @if (successMessage) {
+      <p class="success">{{ successMessage }}</p>
+    }
+
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email" [(ngModel)]="email" required />
+
+    <label for="password">Mot de passe</label>
+    <input id="password" type="password" name="password" [(ngModel)]="password" required minlength="8" />
+
+    <button type="submit" [disabled]="isLoading">
+      {{ isLoading ? 'Création...' : "S'inscrire" }}
+    </button>
+
+    <p>Déjà un compte ? <a routerLink="/login">Se connecter</a></p>
+  </form>
+</div>

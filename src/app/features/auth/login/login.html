@@ -1,0 +1,24 @@
+<div class="auth-container">
+  <form (ngSubmit)="onSubmit()" class="auth-form">
+    <div class="stamp">S</div>
+    <p class="eyebrow">SubTrack</p>
+    <h1>Content de te revoir</h1>
+    <p class="auth-subtitle">Connecte-toi pour retrouver tes abonnements</p>
+
+    @if (errorMessage) {
+      <p class="error">{{ errorMessage }}</p>
+    }
+
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email" [(ngModel)]="email" required />
+
+    <label for="password">Mot de passe</label>
+    <input id="password" type="password" name="password" [(ngModel)]="password" required />
+
+    <button type="submit" [disabled]="isLoading">
+      {{ isLoading ? 'Connexion...' : 'Se connecter' }}
+    </button>
+
+    <p>Pas encore de compte ? <a routerLink="/register">S'inscrire</a></p>
+  </form>
+</div>

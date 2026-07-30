@@ -1,0 +1,65 @@
+<div class="dashboard">
+  <header class="dashboard-header">
+    <div>
+      <p class="eyebrow">Gestion d'abonnements</p>
+      <h1>Mes abonnements</h1>
+    </div>
+    <button class="logout-btn" (click)="onLogout()">Déconnexion</button>
+  </header>
+
+  <div class="summary">
+    <p class="summary-label">Total mensuel estimé</p>
+    <p class="total">{{ totalMonthly() | number: '1.2-2' }} <span class="currency">MAD</span></p>
+  </div>
+
+  <button class="add-btn" (click)="showForm = !showForm">
+    {{ showForm ? 'Annuler' : '+ Ajouter un abonnement' }}
+  </button>
+
+  @if (showForm) {
+    <form (ngSubmit)="onAddSubscription()" class="sub-form">
+      @if (errorMessage) {
+        <p class="error">{{ errorMessage }}</p>
+      }
+
+      <label for="name">Nom</label>
+      <input id="name" type="text" name="name" [(ngModel)]="newSub.name" required />
+
+      <label for="price">Prix (MAD)</label>
+      <input id="price" type="number" name="price" [(ngModel)]="newSub.price" required min="0" step="0.01" />
+
+      <label for="periodicity">Périodicité</label>
+      <select id="periodicity" name="periodicity" [(ngModel)]="newSub.periodicity">
+        <option value="weekly">Hebdomadaire</option>
+        <option value="monthly">Mensuelle</option>
+        <option value="yearly">Annuelle</option>
+      </select>
+
+      <label for="nextPayment">Prochain paiement</label>
+      <input id="nextPayment" type="date" name="nextPayment" [(ngModel)]="newSub.nextPayment" required />
+
+      <button type="submit">Enregistrer</button>
+    </form>
+  }
+
+  <div class="sub-list">
+    @for (sub of subscriptions(); track sub.id) {
+      <div class="sub-card">
+        <div class="sub-info">
+          <p class="sub-period">{{ sub.periodicity === 'monthly' ? 'Mensuel' : sub.periodicity === 'yearly' ? 'Annuel' : 'Hebdo' }}</p>
+          <h3>{{ sub.name }}</h3>
+          <p class="next-payment">Prochain paiement : {{ sub.nextPayment | date: 'dd MMM yyyy' }}</p>
+        </div>
+        <div class="sub-side">
+          <p class="sub-price">{{ sub.price }} <span class="currency">{{ sub.currency }}</span></p>
+          <button class="delete-btn" (click)="onDelete(sub.id)">Résilier</button>
+        </div>
+      </div>
+    } @empty {
+      <div class="empty-state">
+        <p class="empty-title">Aucun billet pour l'instant</p>
+        <p class="empty-subtitle">Ajoute ton premier abonnement pour commencer le suivi.</p>
+      </div>
+    }
+  </div>
+</div>
