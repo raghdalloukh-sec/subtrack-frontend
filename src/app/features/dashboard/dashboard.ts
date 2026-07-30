@@ -20,6 +20,8 @@ export class Dashboard implements OnInit {
   errorMessage = '';
   logoErrors = new Set<string>();
 
+  minDate = new Date().toISOString().split('T')[0];
+
   newSub: SubscriptionInput = {
     name: '',
     price: 0,
@@ -57,6 +59,11 @@ export class Dashboard implements OnInit {
 
   onAddSubscription() {
     this.errorMessage = '';
+
+    if (this.newSub.nextPayment < this.minDate) {
+      this.errorMessage = 'La date de paiement ne peut pas être dans le passé';
+      return;
+    }
 
     const payload = {
       ...this.newSub,

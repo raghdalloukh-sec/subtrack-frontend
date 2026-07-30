@@ -36,8 +36,7 @@
       </select>
 
       <label for="nextPayment">Prochain paiement</label>
-      <input id="nextPayment" type="date" name="nextPayment" [(ngModel)]="newSub.nextPayment" required />
-
+<input id="nextPayment" type="date" name="nextPayment" [(ngModel)]="newSub.nextPayment" [min]="minDate" required />
       <button type="submit">Enregistrer</button>
     </form>
   }
