@@ -15,9 +15,9 @@
     <label for="password">Mot de passe</label>
     <input id="password" type="password" name="password" [(ngModel)]="password" required />
 
-    <button type="submit" [disabled]="isLoading">
-      {{ isLoading ? 'Connexion...' : 'Se connecter' }}
-    </button>
+ <button type="submit" [disabled]="isLoading">
+  {{ isLoading ? 'Connexion en cours (le serveur peut prendre jusqu\'à 30s à se réveiller)...' : 'Se connecter' }}
+</button>
 
     <p>Pas encore de compte ? <a routerLink="/register">S'inscrire</a></p>
   </form>
